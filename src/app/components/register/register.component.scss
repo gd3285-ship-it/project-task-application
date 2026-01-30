@@ -1,0 +1,47 @@
+.auth-container {
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh; background-color: #f0f2f5;
+}
+
+.auth-card {
+  background: white; padding: 2.5rem; border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 100%; max-width: 400px;
+  text-align: center;
+}
+
+.brand-logo {
+  width: 50px; height: 50px; background: #7b68ee; color: white;
+  font-size: 24px; font-weight: bold; line-height: 50px; border-radius: 10px;
+  margin: 0 auto 1rem;
+}
+
+.auth-title { margin: 0; color: #333; }
+.auth-subtitle { color: #666; margin-bottom: 20px; }
+
+.form-group { margin-bottom: 15px; text-align: right; }
+.form-label { display: block; margin-bottom: 5px; font-weight: 500; color: #444; }
+.form-input {
+  width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 6px;
+  box-sizing: border-box;
+  &:focus { border-color: #7b68ee; outline: none; }
+}
+
+.btn-submit {
+  width: 100%; padding: 12px; background: #7b68ee; color: white;
+  border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;
+  margin-top: 10px; transition: 0.2s;
+  &:disabled { background: #ccc; }
+  &:hover:not(:disabled) { background: #6352be; }
+}
+
+.auth-footer { margin-top: 20px; font-size: 0.9rem; color: #666; }
+.auth-link { color: #7b68ee; text-decoration: none; font-weight: bold; margin-right: 5px; }
+
+// ספינר
+.spinner-container { display: flex; justify-content: center; gap: 10px; align-items: center; }
+.spinner {
+  width: 16px; height: 16px; border: 2px solid #ffffff;
+  border-bottom-color: transparent; border-radius: 50%;
+  animation: rotation 1s linear infinite;
+}
+@keyframes rotation { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

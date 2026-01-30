@@ -1,0 +1,53 @@
+<div class="page-wrapper" dir="rtl">
+  <div class="page-container">
+    
+    <div class="page-header">
+      <div>
+        <a routerLink="/teams" class="back-link">→ חזרה לצוותים</a>
+        <h1 class="page-title">פרויקטים</h1>
+        <p class="page-subtitle">ניהול פרויקטים עבור: {{ getSelectedTeamName() }}</p>
+      </div>
+      <button class="btn-primary" (click)="showAddForm.set(!showAddForm())">
+        <span>{{ showAddForm() ? 'סגור טופס' : '+ פרויקט חדש' }}</span>
+      </button>
+    </div>
+
+    @if (showAddForm()) {
+      <div class="add-project-card">
+        <h3>הוספת פרויקט חדש</h3>
+        <form [formGroup]="projectForm" (ngSubmit)="addProject()" class="form-inline">
+          <input formControlName="name" placeholder="שם הפרויקט" class="form-input" />
+          <input formControlName="description" placeholder="תיאור קצר" class="form-input" />
+          <button type="submit" class="btn-primary" [disabled]="projectForm.invalid">שמור</button>
+        </form>
+      </div>
+    }
+
+    <div class="projects-grid">
+      @if (isLoading()) {
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <p>טוען פרויקטים...</p>
+        </div>
+      }
+
+      @for (project of projects(); track project.id) {
+        <div class="project-card" (click)="goToTasks(project.id + '')"> <div class="card-content">
+            <h3>{{ project.name }}</h3>
+            <p>{{ project.description || 'אין תיאור' }}</p>
+          </div>
+          <div class="card-footer">
+            <span>לחץ לצפייה במשימות ←</span>
+          </div>
+        </div>
+      } @empty {
+        @if (!isLoading()) {
+          <div class="empty-state">
+            <h3>אין פרויקטים בצוות זה</h3>
+            <p>התחל ליצור פרויקטים כדי לנהל משימות!</p>
+          </div>
+        }
+      }
+    </div>
+  </div>
+</div>

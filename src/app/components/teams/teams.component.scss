@@ -1,0 +1,183 @@
+.page-wrapper {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  // אין צורך בpadding-top גדול כי הוספנו אותו בקובץ הראשי מתחת להדר
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+
+  h1.page-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 0.5rem 0;
+  }
+
+  p.page-subtitle {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+// --- כפתור ראשי ---
+.btn-primary {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-sm);
+
+  &:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  span {
+    font-size: 1rem;
+  }
+}
+
+// --- רשת הצוותים (Grid) ---
+.teams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+// --- כרטיסייה ---
+.team-card {
+  background: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+  }
+
+  .card-header {
+    padding: 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-light);
+
+    .team-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .team-avatar {
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      h3.team-name {
+        margin: 0;
+        font-size: 1.1rem;
+        color: var(--text-primary);
+      }
+    }
+
+    .member-count {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      padding: 4px 8px;
+      border-radius: 12px;
+    }
+  }
+
+  .card-footer {
+    padding: 1rem;
+    background: #fafbfc;
+    display: flex;
+    gap: 10px;
+    margin-top: auto; // דוחף את הפוטר למטה
+
+    button {
+      flex: 1;
+      padding: 8px;
+      border-radius: var(--radius-md);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+    }
+
+    .btn-view {
+      background: var(--primary);
+      color: white;
+      border: none;
+      &:hover { background: var(--primary-hover); }
+    }
+
+    .btn-add-member {
+      background: white;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      &:hover {
+        border-color: var(--primary);
+        color: var(--primary);
+        background: var(--primary-light);
+      }
+    }
+  }
+}
+
+// --- Loading & Empty States ---
+.loading-state, .empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  grid-column: 1 / -1; // תופס את כל רוחב הגריד
+
+  h3 { margin-bottom: 10px; color: var(--text-primary); }
+  p { color: var(--text-secondary); margin-bottom: 20px; }
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--border-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// --- Mod

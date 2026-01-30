@@ -1,0 +1,116 @@
+<div class="tasks-container" dir="rtl">
+  <div class="header-section">
+    <div class="title-area">
+      <a [routerLink]="['/projects', teamId()]" class="back-link">→ חזרה לפרויקטים</a> 
+      <h2>{{ getProjectName() }}</h2>
+    </div>
+    <button class="add-task-btn" (click)="showForm.set(!showForm())">
+      <span>+ משימה חדשה</span>
+    </button>
+  </div>
+
+  @if (showForm()) {
+    <div class="add-task-modal" (click)="showForm.set(false)">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h3>משימה חדשה</h3>
+        <input [(ngModel)]="newTask.title" placeholder="כותרת המשימה" autofocus>
+        <textarea [(ngModel)]="newTask.description" placeholder="תיאור" rows="3"></textarea>
+        <div class="row">
+          <select [(ngModel)]="newTask.priority">
+            <option value="low">נמוכה</option>
+            <option value="normal">רגילה</option>
+            <option value="high">גבוהה</option>
+          </select>
+          <input type="date" [(ngModel)]="newTask.dueDate">
+        </div>
+        <div class="modal-footer">
+          <button class="btn-cancel" (click)="showForm.set(false)">ביטול</button>
+          <button class="btn-save" (click)="addTask()">שמור</button>
+        </div>
+      </div>
+    </div>
+  }
+
+  @if (isLoading()) { <div class="loading">טוען...</div> }
+
+  <div class="kanban-board">
+    <div class="kanban-column">
+      <div class="column-header backlog"><h3>לביצוע</h3></div>
+      <div class="column-content">
+        @for (task of getTasksByStatus('todo'); track task.id) {
+          <div class="task-card">
+            <div class="task-header">
+              <h4>{{ task.title }}</h4>
+              <button class="delete-btn" (click)="removeTask(task.id!)">×</button>
+            </div>
+            <p>{{ task.description }}</p>
+            <div class="actions">
+              <button (click)="changeStatus(task.id!, 'in_progress')">התחל ←</button>
+              <button class="comment-btn" (click)="toggleComments(task.id!)">💬</button>
+            </div>
+            @if (activeTaskId() === task.id) {
+               <ng-container *ngTemplateOutlet="commentsTemplate; context: {$implicit: task}"></ng-container>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="kanban-column">
+      <div class="column-header in-progress"><h3>בתהליך</h3></div>
+      <div class="column-content">
+        @for (task of getTasksByStatus('in_progress'); track task.id) {
+          <div class="task-card">
+            <div class="task-header">
+              <h4>{{ task.title }}</h4>
+              <button class="delete-btn" (click)="removeTask(task.id!)">×</button>
+            </div>
+            <p>{{ task.description }}</p>
+            <div class="actions">
+              <button (click)="changeStatus(task.id!, 'done')">סיים →</button>
+              <button class="comment-btn" (click)="toggleComments(task.id!)">💬</button>
+            </div>
+            @if (activeTaskId() === task.id) {
+               <ng-container *ngTemplateOutlet="commentsTemplate; context: {$implicit: task}"></ng-container>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <div class="kanban-column">
+      <div class="column-header done"><h3>בוצע</h3></div>
+      <div class="column-content">
+        @for (task of getTasksByStatus('done'); track task.id) {
+          <div class="task-card completed">
+            <div class="task-header">
+              <h4>{{ task.title }}</h4>
+              <button class="delete-btn" (click)="removeTask(task.id!)">×</button>
+            </div>
+            <div class="actions">
+              <button (click)="changeStatus(task.id!, 'in_progress')">← החזר</button>
+              <button class="comment-btn" (click)="toggleComments(task.id!)">💬</button>
+            </div>
+            @if (activeTaskId() === task.id) {
+               <ng-container *ngTemplateOutlet="commentsTemplate; context: {$implicit: task}"></ng-container>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #commentsTemplate let-task>
+  <div class="comments-section">
+    <div class="comments-list">
+      @for (c of currentComments(); track c.id) {
+        <div class="comment"><strong>{{ c.author_name || 'משתמש' }}:</strong> {{ c.body }}</div>
+      }
+    </div>
+    <div class="add-comment">
+      <input #txt placeholder="תגובה..." (keyup.enter)="addComment(task.id!, txt.value); txt.value=''">
+      <button (click)="addComment(task.id!, txt.value); txt.value=''">שלח</button>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,6 @@
+@if (message()) {
+  <div class="error-banner">
+    <span>{{ message() }}</span>
+    <button class="close-btn" (click)="close()">×</button>
+  </div>
+}

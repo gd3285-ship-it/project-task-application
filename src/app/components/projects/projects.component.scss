@@ -1,0 +1,61 @@
+// שימוש באותם משתנים כמו ב-Teams למראה אחיד
+.page-wrapper { min-height: 100vh; background: var(--bg-secondary); }
+.page-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+.page-header {
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;
+  .back-link { display: block; margin-bottom: 5px; color: var(--text-secondary); text-decoration: none; &:hover { color: var(--primary); } }
+  .page-title { margin: 0; font-size: 1.8rem; color: var(--text-primary); }
+  .page-subtitle { margin: 0; color: var(--text-secondary); }
+}
+
+.btn-primary {
+  background: var(--primary); color: white; border: none; padding: 10px 20px;
+  border-radius: var(--radius-md); font-weight: 600; cursor: pointer;
+  transition: var(--transition);
+  &:hover { background: var(--primary-hover); transform: translateY(-2px); }
+  &:disabled { background: #ccc; cursor: not-allowed; }
+}
+
+.add-project-card {
+  background: white; padding: 20px; border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md); margin-bottom: 30px; border: 1px solid var(--border);
+  h3 { margin-top: 0; color: var(--text-primary); }
+  
+  .form-inline {
+    display: flex; gap: 10px;
+    .form-input {
+      flex: 1; padding: 10px; border: 1px solid var(--border); border-radius: var(--radius-md);
+      &:focus { outline: none; border-color: var(--primary); }
+    }
+  }
+}
+
+.projects-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;
+}
+
+.project-card {
+  background: white; border-radius: var(--radius-lg); padding: 0;
+  border: 1px solid var(--border); cursor: pointer; transition: var(--transition);
+  display: flex; flex-direction: column; overflow: hidden;
+  border-right: 4px solid var(--primary); // פס צבע בצד
+
+  &:hover {
+    transform: translateY(-4px); box-shadow: var(--shadow-lg);
+    .card-footer span { padding-right: 5px; color: var(--primary); }
+  }
+
+  .card-content { padding: 20px; flex: 1; }
+  h3 { margin: 0 0 10px 0; color: var(--text-primary); }
+  p { color: var(--text-secondary); margin: 0; line-height: 1.4; }
+
+  .card-footer {
+    padding: 15px 20px; background: var(--bg-secondary); border-top: 1px solid var(--border-light);
+    span { font-size: 0.9rem; color: var(--text-secondary); transition: var(--transition); }
+  }
+}
+
+.loading-state, .empty-state { text-align: center; padding: 40px; grid-column: 1/-1; }
+.spinner { width: 30px; height: 30px; border: 3px solid #ddd; border-top-color: var(--primary); border-radius: 50%; animation: spin 1s infinite; margin: 0 auto 10px; }
+@keyframes spin { to { transform: rotate(360deg); } }

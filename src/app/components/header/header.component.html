@@ -1,0 +1,34 @@
+<header class="app-header" *ngIf="isAuthenticated()" dir="rtl">
+  <div class="header-container">
+    
+    <div class="header-brand" routerLink="/teams">
+      <div class="brand-logo">W</div>
+      <h1 class="brand-title">Wolf Tasks</h1>
+    </div>
+    
+    <nav class="header-nav">
+      <div class="nav-link" [class.active]="isActiveSection('teams')" routerLink="/teams">
+        <span class="nav-icon">👥</span><span>צוותים</span>
+      </div>
+      </nav>
+
+    <div class="header-user">
+      <div class="user-menu">
+        <button class="user-info" (click)="toggleUserMenu()">
+          <div class="user-avatar">
+            {{ userName().charAt(0).toUpperCase() }}
+          </div>
+          <span class="user-name">{{ userName() }}</span>
+          <span class="dropdown-arrow">▼</span>
+        </button>
+        
+        <div class="user-dropdown" *ngIf="showUserMenu">
+          <button class="dropdown-item logout-item" (click)="logout()">
+            <span class="logout-icon">⎋</span>
+            <span>התנתק</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

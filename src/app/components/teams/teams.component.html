@@ -1,0 +1,90 @@
+<div class="page-wrapper" dir="rtl">
+  <div class="page-container">
+    <div class="page-header">
+      <div>
+        <h1 class="page-title">הצוותים שלי</h1>
+        <p class="page-subtitle">ניהול הצוותים והפרויקטים במקום אחד</p>
+      </div>
+      <button class="btn-primary" (click)="showAddForm.set(true)">
+        <span>+ צוות חדש</span>
+      </button>
+    </div>
+
+    @if (isLoading()) {
+      <div class="loading-state">
+        <div class="spinner"></div>
+        <p>טוען נתונים...</p>
+      </div>
+    }
+
+    <div class="teams-grid">
+      @for (team of teams(); track team.id) { 
+        <div class="team-card">
+          <div class="card-header">
+            <div class="team-info">
+              <div class="team-avatar">{{ team.name.charAt(0).toUpperCase() }}</div>
+              <h3 class="team-name">{{ team.name }}</h3>
+            </div>
+            <span class="member-count">{{ team.members?.length || 1 }} חברים</span>
+          </div>
+          
+          <div class="card-footer">
+            <button [routerLink]="['/projects', team.id]" class="btn-view">
+               צפה בפרויקטים ←
+            </button>
+            <button class="btn-add-member" (click)="showAddMemberForm.set(team.id + '')">
+              + הוסף חבר
+            </button>
+          </div>
+        </div>
+      } @empty {
+        @if (!isLoading()) {
+          <div class="empty-state">
+            <h3>אין עדיין צוותים</h3>
+            <p>צור את הצוות הראשון שלך כדי להתחיל לעבוד!</p>
+          </div>
+        }
+      }
+    </div>
+
+    @if (showAddForm()) {
+      <div class="modal-overlay" (click)="showAddForm.set(false)">
+        <div class="modal" (click)="$event.stopPropagation()">
+          <div class="modal-header">
+            <h2 class="modal-title">צוות חדש</h2>
+            <button class="btn-close" (click)="showAddForm.set(false)">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">שם הצוות</label>
+              <input #newTeamName type="text" placeholder="שם הצוות..." class="form-input">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-primary" (click)="addTeam(newTeamName.value)">צור</button>
+          </div>
+        </div>
+      </div>
+    }
+
+    @if (showAddMemberForm() !== null) {
+      <div class="modal-overlay" (click)="showAddMemberForm.set(null)">
+        <div class="modal modal-small" (click)="$event.stopPropagation()">
+          <div class="modal-header">
+            <h2 class="modal-title">הוספת חבר</h2>
+            <button class="btn-close" (click)="showAddMemberForm.set(null)">×</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label class="form-label">ID של המשתמש</label>
+              <input #userId type="number" placeholder="הכנס מזהה משתמש (למשל: 1)" class="form-input">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-primary" (click)="addMemberToTeam(showAddMemberForm()!, userId.value)">הוסף</button>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

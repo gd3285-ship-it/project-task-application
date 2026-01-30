@@ -1,0 +1,43 @@
+.app-header {
+  background: white; border-bottom: 1px solid var(--border);
+  height: 64px; position: fixed; top: 0; right: 0; left: 0; z-index: 1000;
+}
+.header-container {
+  max-width: 1400px; margin: 0 auto; height: 100%; padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.header-brand { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.brand-logo {
+  width: 32px; height: 32px; background: var(--primary); color: white;
+  border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold;
+}
+.brand-title { font-size: 1.2rem; margin: 0; color: var(--text-primary); }
+
+.header-nav { display: flex; gap: 20px; height: 100%; }
+.nav-link {
+  display: flex; align-items: center; gap: 8px; height: 100%; cursor: pointer;
+  color: var(--text-secondary); border-bottom: 2px solid transparent; transition: 0.2s;
+  &:hover { color: var(--primary); }
+  &.active { color: var(--primary); border-bottom-color: var(--primary); }
+}
+
+.header-user { position: relative; }
+.user-info {
+  display: flex; align-items: center; gap: 10px; background: none; border: none; cursor: pointer;
+  padding: 5px 10px; border-radius: 6px; &:hover { background: var(--bg-secondary); }
+}
+.user-avatar {
+  width: 32px; height: 32px; background: #2ecc71; color: white; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center; font-weight: bold;
+}
+.user-dropdown {
+  position: absolute; top: 100%; left: 0; width: 150px; background: white;
+  border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-lg);
+  margin-top: 10px; overflow: hidden;
+}
+.dropdown-item {
+  width: 100%; padding: 10px; display: flex; align-items: center; gap: 10px;
+  background: none; border: none; cursor: pointer; text-align: right;
+  &:hover { background: var(--bg-secondary); }
+  &.logout-item { color: #e74c3c; }
+}
