@@ -1,3 +1,5 @@
+<div dir="rtl">
+
 # מערכת לניהול משימות בצוותים (Task Management System)
 
 מערכת לניהול משימות בצוותים, בדומה ל-ClickUp, הבנויה ב-**Angular 20**. המערכת מאפשרת עבודה בצוותים, ניהול פרויקטים, וניהול משימות עם לוח קנבן.
@@ -41,19 +43,33 @@
 * **npm** (מגיע עם Node.js)
 * **Angular CLI** (גרסה 20)
 
+<div dir="ltr">
+
 ```bash
 # התקנת Angular CLI
 npm install -g @angular/cli@20
+</div>
+
 📥 התקנת הפרויקט
 1. שכפול הפרויקט (Client)
+<div dir="ltr">
+
 Bash
 git clone [https://github.com/your-username/team-tasks-angular.git](https://github.com/your-username/team-tasks-angular.git)
 cd team-tasks-angular
+</div>
+
 2. התקנת תלויות
+<div dir="ltr">
+
 Bash
 npm install
+</div>
+
 3. הגדרת השרת (Server)
 הפרויקט עובד מול שרת Node.js. להורדת והפעלת השרת:
+
+<div dir="ltr">
 
 Bash
 # שכפול השרת
@@ -65,9 +81,13 @@ npm install
 
 # הפעלת השרת
 npm start
+</div>
+
 השרת יפעל על: http://localhost:3000
 
 4. הפעלת האפליקציה (Client)
+<div dir="ltr">
+
 Bash
 # חזרה לתיקיית הפרויקט
 cd ../team-tasks-angular
@@ -77,9 +97,13 @@ ng serve
 
 # או הפעלה עם פתיחה אוטומטית בדפדפן
 ng serve --open
+</div>
+
 האפליקציה תהיה זמינה ב: http://localhost:4200
 
 📂 מבנה הפרויקט
+
+
 Plaintext
 src/
 ├── app/
@@ -105,6 +129,8 @@ src/
 │   └── app.config.ts         # הגדרות
 ├── styles.css                # סגנונות גלובליים
 └── index.html
+</div>
+
 🔌 API Endpoints
 Authentication (לא מוגן)
 POST /api/auth/register - הרשמת משתמש חדש
@@ -141,11 +167,15 @@ POST /api/comments - הוספת תגובה חדשה
 
 🏗️ בנייה לפרודקשן
 בניית הפרויקט
+<div dir="ltr">
+
 Bash
 ng build --configuration production
-הקבצים ייווצרו בתיקייה: dist/team-tasks-angular/browser/
+</div> הקבצים ייווצרו בתיקייה: dist/team-tasks-angular/browser/
 
 בדיקת הבנייה מקומית
+<div dir="ltr">
+
 Bash
 # התקנת http-server אם לא קיים
 npm install -g http-server
@@ -153,11 +183,13 @@ npm install -g http-server
 # הפעלת השרת מתיקיית ה-build
 cd dist/team-tasks-angular/browser
 http-server -p 8080
-גש ל: http://localhost:8080
+</div> גש ל: http://localhost:8080
 
 🌐 העלאה ל-Render
 שלב 1: הכנת הפרויקט
 ודא ש-package.json מכיל:
+
+
 
 JSON
 {
@@ -165,9 +197,11 @@ JSON
     "build": "ng build --configuration production"
   }
 }
-בדוק את נתיב ה-output על ידי הרצת ng build --configuration production ובדיקה היכן נמצא קובץ index.html.
+</div> בדוק את נתיב ה-output על ידי הרצת ng build --configuration production ובדיקה היכן נמצא קובץ index.html.
 
 שלב 2: העלאה ל-GitHub
+<div dir="ltr">
+
 Bash
 # אתחול Git (אם עדיין לא בוצע)
 git init
@@ -184,6 +218,8 @@ git remote add origin [https://github.com/your-username/team-tasks-angular.git](
 # העלאה ל-GitHub
 git branch -M main
 git push -u origin main
+
+
 שלב 3: יצירת Static Site ב-Render
 התחבר ל-Render.
 
@@ -250,6 +286,7 @@ Password Validation - בדיקת חוזק סיסמה
 📱 Mobile (320px-767px)
 
 🧪 הרצת בדיקות
+
 Bash
 # Unit Tests
 ng test
@@ -259,8 +296,11 @@ ng e2e
 
 # Code Coverage
 ng test --code-coverage
+
+
 📝 דוגמאות שימוש
 יצירת צוות חדש
+
 TypeScript
 // teams.component.ts
 addTeam(name: string) {
@@ -270,7 +310,11 @@ addTeam(name: string) {
     }
   });
 }
+
+
 הוספת משימה חדשה
+
+
 TypeScript
 // tasks.component.ts
 addTask() {
@@ -287,8 +331,11 @@ addTask() {
     }
   });
 }
+
+
 🐛 פתרון בעיות נפוצות
 השרת לא עובד
+
 Bash
 # בדוק שהשרת רץ על פורט 3000
 curl http://localhost:3000/health
@@ -296,11 +343,17 @@ curl http://localhost:3000/health
 # אם לא עובד, הפעל מחדש
 cd WolfTasksServer
 npm start
+
+
 שגיאות CORS
 ודא שהשרת מגדיר CORS נכון. בקובץ server.js של השרת:
 
+
+
 JavaScript
 app.use(cors());
+</div>
+
 Token לא עובד
 ודא שהתחברת למערכת.
 
@@ -309,6 +362,8 @@ Token לא עובד
 נסה להתנתק ולהתחבר שוב.
 
 👨‍💻 פיתוח נוסף
+
+
 Bash
 # הוספת קומפוננטה חדשה
 ng generate component components/my-component
@@ -318,6 +373,8 @@ ng generate service services/my-service
 
 # הוספת Guard
 ng generate guard guards/my-guard
+
+
 📄 רישיון
 MIT License - ראה קובץ LICENSE לפרטים.
 
@@ -345,3 +402,4 @@ TypeScript Documentation
 RxJS Documentation
 
 Render Documentation
+
