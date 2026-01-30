@@ -1,8 +1,8 @@
 <div dir="rtl">
 
-# מערכת לניהול משימות בצוותים (Task Management System)
+# 📋 Team Tasks - מערכת לניהול משימות בצוות
 
-מערכת לניהול משימות בצוותים, בדומה ל-ClickUp, הבנויה ב-**Angular 20**. המערכת מאפשרת עבודה בצוותים, ניהול פרויקטים, וניהול משימות עם לוח קנבן.
+מערכת לניהול משימות בצוותים, בדומה ל-ClickUp, הבנויה ב-**Angular**. המערכת מאפשרת עבודה בצוותים, ניהול פרויקטים, וניהול משימות עם לוח קנבן.
 
 ---
 
@@ -41,13 +41,13 @@
 ### דרישות מוקדמות
 * **Node.js** (גרסה 18 ומעלה)
 * **npm** (מגיע עם Node.js)
-* **Angular CLI** (גרסה 20)
+* **Angular CLI**
 
 <div dir="ltr">
 
 ```bash
 # התקנת Angular CLI
-npm install -g @angular/cli@20
+npm install -g @angular/cli
 </div>
 
 📥 התקנת הפרויקט
@@ -102,7 +102,7 @@ ng serve --open
 האפליקציה תהיה זמינה ב: http://localhost:4200
 
 📂 מבנה הפרויקט
-
+<div dir="ltr">
 
 Plaintext
 src/
@@ -189,7 +189,7 @@ http-server -p 8080
 שלב 1: הכנת הפרויקט
 ודא ש-package.json מכיל:
 
-
+<div dir="ltr">
 
 JSON
 {
@@ -218,7 +218,7 @@ git remote add origin [https://github.com/your-username/team-tasks-angular.git](
 # העלאה ל-GitHub
 git branch -M main
 git push -u origin main
-
+</div>
 
 שלב 3: יצירת Static Site ב-Render
 התחבר ל-Render.
@@ -246,9 +246,9 @@ Publish Directory: dist/team-tasks-angular/browser (או הנתיב שמצאת �
 
 🎨 טכנולוגיות
 Frontend
-Angular 20 - Framework ראשי
+Angular - Framework ראשי
 
-TypeScript 5.0 - שפת התכנות
+TypeScript - שפת התכנות
 
 RxJS - ניהול אסינכרוניות
 
@@ -286,6 +286,7 @@ Password Validation - בדיקת חוזק סיסמה
 📱 Mobile (320px-767px)
 
 🧪 הרצת בדיקות
+<div dir="ltr">
 
 Bash
 # Unit Tests
@@ -296,10 +297,11 @@ ng e2e
 
 # Code Coverage
 ng test --code-coverage
-
+</div>
 
 📝 דוגמאות שימוש
 יצירת צוות חדש
+<div dir="ltr">
 
 TypeScript
 // teams.component.ts
@@ -310,10 +312,10 @@ addTeam(name: string) {
     }
   });
 }
-
+</div>
 
 הוספת משימה חדשה
-
+<div dir="ltr">
 
 TypeScript
 // tasks.component.ts
@@ -331,10 +333,11 @@ addTask() {
     }
   });
 }
-
+</div>
 
 🐛 פתרון בעיות נפוצות
 השרת לא עובד
+<div dir="ltr">
 
 Bash
 # בדוק שהשרת רץ על פורט 3000
@@ -343,12 +346,12 @@ curl http://localhost:3000/health
 # אם לא עובד, הפעל מחדש
 cd WolfTasksServer
 npm start
-
+</div>
 
 שגיאות CORS
 ודא שהשרת מגדיר CORS נכון. בקובץ server.js של השרת:
 
-
+<div dir="ltr">
 
 JavaScript
 app.use(cors());
@@ -362,7 +365,7 @@ Token לא עובד
 נסה להתנתק ולהתחבר שוב.
 
 👨‍💻 פיתוח נוסף
-
+<div dir="ltr">
 
 Bash
 # הוספת קומפוננטה חדשה
@@ -373,7 +376,7 @@ ng generate service services/my-service
 
 # הוספת Guard
 ng generate guard guards/my-guard
-
+</div>
 
 📄 רישיון
 MIT License - ראה קובץ LICENSE לפרטים.
@@ -403,3 +406,4 @@ RxJS Documentation
 
 Render Documentation
 
+</div>
