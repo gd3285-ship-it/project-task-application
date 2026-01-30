@@ -1,4 +1,4 @@
-<div dir="rtl">
+
 
 # 📋 Team Tasks - מערכת לניהול משימות בצוות
 
@@ -48,11 +48,11 @@
 ```bash
 # התקנת Angular CLI
 npm install -g @angular/cli
-</div>
+
 
 📥 התקנת הפרויקט
 1. שכפול הפרויקט (Client)
-<div dir="ltr">
+
 
 Bash
 git clone [https://github.com/your-username/team-tasks-angular.git](https://github.com/your-username/team-tasks-angular.git)
@@ -81,12 +81,11 @@ npm install
 
 # הפעלת השרת
 npm start
-</div>
+
 
 השרת יפעל על: http://localhost:3000
 
 4. הפעלת האפליקציה (Client)
-<div dir="ltr">
 
 Bash
 # חזרה לתיקיית הפרויקט
@@ -97,7 +96,7 @@ ng serve
 
 # או הפעלה עם פתיחה אוטומטית בדפדפן
 ng serve --open
-</div>
+
 
 האפליקציה תהיה זמינה ב: http://localhost:4200
 
@@ -129,7 +128,7 @@ src/
 │   └── app.config.ts         # הגדרות
 ├── styles.css                # סגנונות גלובליים
 └── index.html
-</div>
+
 
 🔌 API Endpoints
 Authentication (לא מוגן)
@@ -167,14 +166,14 @@ POST /api/comments - הוספת תגובה חדשה
 
 🏗️ בנייה לפרודקשן
 בניית הפרויקט
-<div dir="ltr">
+
 
 Bash
 ng build --configuration production
 </div> הקבצים ייווצרו בתיקייה: dist/team-tasks-angular/browser/
 
 בדיקת הבנייה מקומית
-<div dir="ltr">
+
 
 Bash
 # התקנת http-server אם לא קיים
@@ -183,13 +182,12 @@ npm install -g http-server
 # הפעלת השרת מתיקיית ה-build
 cd dist/team-tasks-angular/browser
 http-server -p 8080
-</div> גש ל: http://localhost:8080
+> גש ל: http://localhost:8080
 
 🌐 העלאה ל-Render
 שלב 1: הכנת הפרויקט
 ודא ש-package.json מכיל:
 
-<div dir="ltr">
 
 JSON
 {
@@ -200,7 +198,6 @@ JSON
 </div> בדוק את נתיב ה-output על ידי הרצת ng build --configuration production ובדיקה היכן נמצא קובץ index.html.
 
 שלב 2: העלאה ל-GitHub
-<div dir="ltr">
 
 Bash
 # אתחול Git (אם עדיין לא בוצע)
@@ -218,7 +215,7 @@ git remote add origin [https://github.com/your-username/team-tasks-angular.git](
 # העלאה ל-GitHub
 git branch -M main
 git push -u origin main
-</div>
+
 
 שלב 3: יצירת Static Site ב-Render
 התחבר ל-Render.
@@ -297,7 +294,7 @@ ng e2e
 
 # Code Coverage
 ng test --code-coverage
-</div>
+
 
 📝 דוגמאות שימוש
 יצירת צוות חדש
@@ -312,10 +309,10 @@ addTeam(name: string) {
     }
   });
 }
-</div>
+
 
 הוספת משימה חדשה
-<div dir="ltr">
+
 
 TypeScript
 // tasks.component.ts
@@ -333,11 +330,10 @@ addTask() {
     }
   });
 }
-</div>
+
 
 🐛 פתרון בעיות נפוצות
 השרת לא עובד
-<div dir="ltr">
 
 Bash
 # בדוק שהשרת רץ על פורט 3000
@@ -346,16 +342,15 @@ curl http://localhost:3000/health
 # אם לא עובד, הפעל מחדש
 cd WolfTasksServer
 npm start
-</div>
 
 שגיאות CORS
 ודא שהשרת מגדיר CORS נכון. בקובץ server.js של השרת:
 
-<div dir="ltr">
+
 
 JavaScript
 app.use(cors());
-</div>
+
 
 Token לא עובד
 ודא שהתחברת למערכת.
@@ -365,7 +360,7 @@ Token לא עובד
 נסה להתנתק ולהתחבר שוב.
 
 👨‍💻 פיתוח נוסף
-<div dir="ltr">
+
 
 Bash
 # הוספת קומפוננטה חדשה
@@ -376,7 +371,7 @@ ng generate service services/my-service
 
 # הוספת Guard
 ng generate guard guards/my-guard
-</div>
+
 
 📄 רישיון
 MIT License - ראה קובץ LICENSE לפרטים.
@@ -406,4 +401,3 @@ RxJS Documentation
 
 Render Documentation
 
-</div>
